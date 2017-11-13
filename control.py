@@ -32,18 +32,18 @@ def main():
         },
         'Beer Temp': {
             'type': 'numeric',
-            'bind': F2C(beacon['Temp']) if beacon else None
+            'bind': F2C(int(beacon['Temp']) if beacon else None
         }
     }
 
-    diagnostics = {
+    diagnostics={
         'CPU Temp': rpi.cpu_temp,
         'IP Address': rpi.ip_address,
         'Host': gethostname(),
         'Operating System': " ".join(uname())
     }
 
-    device = cloud4rpi.connect(DEVICE_TOKEN)
+    device=cloud4rpi.connect(DEVICE_TOKEN)
     device.declare(variables)
     device.declare_diag(diagnostics)
 
@@ -53,17 +53,17 @@ def main():
     time.sleep(1)
 
     try:
-        data_timer = 0
-        diag_timer = 0
+        data_timer=0
+        diag_timer=0
         while True:
             if data_timer <= 0:
-                beacon = tilt.getFirstTilt()
+                beacon=tilt.getFirstTilt()
                 device.publish_data()
-                data_timer = DATA_SENDING_INTERVAL
+                data_timer=DATA_SENDING_INTERVAL
 
             if diag_timer <= 0:
                 device.publish_diag()
-                diag_timer = DIAG_SENDING_INTERVAL
+                diag_timer=DIAG_SENDING_INTERVAL
 
             time.sleep(POLL_INTERVAL)
             diag_timer -= POLL_INTERVAL
@@ -73,7 +73,7 @@ def main():
         cloud4rpi.log.info('Keyboard interrupt received. Stopping...')
 
     except Exception as e:
-        error = cloud4rpi.get_error_message(e)
+        error=cloud4rpi.get_error_message(e)
         cloud4rpi.log.error("ERROR! %s %s", error, sys.exc_info()[0])
 
     finally:
