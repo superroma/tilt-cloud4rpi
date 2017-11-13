@@ -15,9 +15,20 @@ DATA_SENDING_INTERVAL = 60  # secs
 DIAG_SENDING_INTERVAL = 600  # secs
 POLL_INTERVAL = 0.5  # 500 ms
 
+temp = 20
+gravity = 1000
+
 
 def F2C(degreesF):
     return (degreesF - 32) / 1.8
+
+
+def getTemp():
+    return temp
+
+
+def getGravity():
+    return gravity
 
 
 def main():
@@ -29,11 +40,11 @@ def main():
     variables = {
         'Gravity': {
             'type': 'numeric',
-            'bind': gravity
+            'bind': getGravity
         },
         'Beer Temp': {
             'type': 'numeric',
-            'bind': temp
+            'bind': getTemp
         }
     }
 
