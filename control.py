@@ -17,6 +17,10 @@ DIAG_SENDING_INTERVAL = 60  # secs
 POLL_INTERVAL = 0.5  # 500 ms
 
 
+def F2C(degreesF):
+    return (degreesF - 32) / 1.8
+
+
 def main():
     beacon = tilt.getFirstTilt()
 
@@ -28,7 +32,7 @@ def main():
         },
         'Beer Temp': {
             'type': 'numeric',
-            'bind': beacon['Temp'] if beacon else None
+            'bind': F2C(beacon['Temp']) if beacon else None
         }
     }
 
