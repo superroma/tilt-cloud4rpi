@@ -2,7 +2,6 @@ from os import uname
 from socket import gethostname
 import sys
 import time
-import random
 import cloud4rpi
 import rpi
 import tilt
