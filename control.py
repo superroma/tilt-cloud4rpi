@@ -22,16 +22,18 @@ def F2C(degreesF):
 
 def main():
     beacon = tilt.getFirstTilt()
+    temp = F2C(int(beacon['Temp'])) if beacon else None
+    gravity = beacon['Gravity'] if beacon else None
 
     # Put variable declarations here
     variables = {
         'Gravity': {
             'type': 'numeric',
-            'bind': beacon['Gravity'] if beacon else None
+            'bind': gravity
         },
         'Beer Temp': {
             'type': 'numeric',
-            'bind': F2C(int(beacon['Temp'])) if beacon else None
+            'bind': temp
         }
     }
 
@@ -57,6 +59,8 @@ def main():
         while True:
             if data_timer <= 0:
                 beacon = tilt.getFirstTilt()
+                temp = F2C(int(beacon['Temp'])) if beacon else None
+                gravity = beacon['Gravity'] if beacon else None
                 device.publish_data()
                 data_timer = DATA_SENDING_INTERVAL
 
