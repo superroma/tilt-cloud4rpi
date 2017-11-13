@@ -53,6 +53,7 @@ def main():
         diag_timer = 0
         while True:
             if data_timer <= 0:
+                beacon = tilt.getFirstTilt()
                 device.publish_data()
                 data_timer = DATA_SENDING_INTERVAL
 
@@ -63,7 +64,6 @@ def main():
             time.sleep(POLL_INTERVAL)
             diag_timer -= POLL_INTERVAL
             data_timer -= POLL_INTERVAL
-            beacon = tilt.getFirstTilt()
 
     except KeyboardInterrupt:
         cloud4rpi.log.info('Keyboard interrupt received. Stopping...')
