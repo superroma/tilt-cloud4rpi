@@ -15,8 +15,7 @@ DATA_SENDING_INTERVAL = 60  # secs
 DIAG_SENDING_INTERVAL = 600  # secs
 POLL_INTERVAL = 0.5  # 500 ms
 
-temp = 20
-gravity = 1000
+beacon = {}
 
 
 def F2C(degreesF):
@@ -24,17 +23,14 @@ def F2C(degreesF):
 
 
 def getTemp():
-    return temp
+    return F2C(int(beacon['Temp'])) if beacon else None
 
 
 def getGravity():
-    return gravity
+    return beacon['Gravity'] if beacon else None
 
 
 def main():
-    beacon = tilt.getFirstTilt()
-    temp = F2C(int(beacon['Temp'])) if beacon else None
-    gravity = beacon['Gravity'] if beacon else None
 
     # Put variable declarations here
     variables = {
@@ -70,8 +66,6 @@ def main():
         while True:
             if data_timer <= 0:
                 beacon = tilt.getFirstTilt()
-                temp = F2C(int(beacon['Temp'])) if beacon else None
-                gravity = beacon['Gravity'] if beacon else None
                 device.publish_data()
                 data_timer = DATA_SENDING_INTERVAL
 
