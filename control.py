@@ -22,17 +22,25 @@ def F2C(degreesF):
     return (degreesF - 32) / 1.8
 
 
+def getTemp():
+    return F2C(int(beacon['Temp'])) if beacon else None
+
+
+def getGravity():
+    return beacon['Gravity'] if beacon else None
+
+
 def main():
 
     # Put variable declarations here
     variables = {
         'Gravity': {
             'type': 'numeric',
-            'bind': beacon['Gravity'] if beacon else None
+            'bind': getGravity
         },
         'Beer Temp': {
             'type': 'numeric',
-            'bind': F2C(int(beacon['Temp'])) if beacon else None
+            'bind': getTemp
         }
     }
 
