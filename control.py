@@ -65,6 +65,7 @@ def main():
         diag_timer = 0
         while True:
             if data_timer <= 0:
+                global beacon
                 beacon = tilt.getFirstTilt()
                 device.publish_data()
                 data_timer = DATA_SENDING_INTERVAL
