@@ -23,11 +23,11 @@ def F2C(degreesF):
 
 
 def getTemp():
-    return F2C(int(beacon['Temp'])) if beacon else None
+    return F2C(int(beacon['Temp'])) if beacon else 20
 
 
 def getGravity():
-    return beacon['Gravity'] if beacon else None
+    return beacon['Gravity'] if beacon else 1000
 
 
 def main():
