@@ -1,5 +1,5 @@
 # tilt-cloud4rpi
-Send data from [Tilt hydrometer](https://tilthydrometer.com) to the cloud4rpi.io control panel. Works on Rasbperry Pi.
+Send data from [Tilt hydrometer](https://tilthydrometer.com) to the [cloud4rpi.io](https://cloud4rpi.io) control panel. Works on Rasbperry Pi.
 
 ## Installation
 On a Rasbperry Pi, make sure system is up-to date:
@@ -19,7 +19,7 @@ Then clone this repo
 git clone https://github.com/superroma/tilt-cloud4rpi
 cd tilt-cloud4rpi
 ```
-Edit `control.py` and replace `__YOUR_DEVICE_TOKEN__` with device token given to you when adding new device at https://cloud4rpi.io
+Edit `control.py` and replace `__YOUR_DEVICE_TOKEN__` with device token given to you when adding new device at [cloud4rpi.io](https://cloud4rpi.io)
 
 ## Running
 Just run
