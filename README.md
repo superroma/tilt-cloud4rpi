@@ -8,7 +8,7 @@ sudo apt update && sudo apt upgrade
 ```
 Install prerequisites
 ```sh
-sudo apt install git python python-pip
+sudo apt install git python python-pip python-bluez
 ```
 Install cloud4rpi python package
 ```sh
